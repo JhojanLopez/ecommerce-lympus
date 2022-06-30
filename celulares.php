@@ -206,12 +206,14 @@
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-bs-interval="10000">
-                                <img src="img/imgGrandes/Celulares/Pagina principal/sku_18847345_01.jpg" class="d-block w-100" alt="productos" width="1279" height="475"/>
+                                <img src="img/imgGrandes/Celulares/Pagina principal/sku_18847345_01.jpg"
+                                    class="d-block w-100" alt="productos" width="1279" height="475" />
                                 <div class="carousel-caption d-none d-md-block text-light">
                                 </div>
                             </div>
                             <div class="carousel-item" data-bs-interval="2000">
-                                <img src="img/imgGrandes/Celulares/Pagina principal/sku_14151731_01.jpg" class="d-block w-100" alt="servicios" width="1279" height="475"/>
+                                <img src="img/imgGrandes/Celulares/Pagina principal/sku_14151731_01.jpg"
+                                    class="d-block w-100" alt="servicios" width="1279" height="475" />
                                 <div class="carousel-caption d-none d-md-block text-light">
                                 </div>
                             </div>
@@ -411,7 +413,7 @@
                         <li class="mb-1">
                             <a class="link-secondary text-decoration-none" href="televisores.php">Televisores</a>
                         </li>
-                        
+
                     </ul>
                 </div>
                 <div class="col-4 col-md">
@@ -422,7 +424,7 @@
                         </li>
                         <li class="mb-1">
                             <a class="link-secondary text-decoration-none" href="postpago.php">postpago</a>
-                        </li>                        
+                        </li>
                     </ul>
                 </div>
                 <div class="col-4 col-md">
@@ -433,9 +435,9 @@
                         </li>
                         <li class="mb-1">
                             <a class="link-secondary text-decoration-none" href="doblePlay.php">Dobleplay hogar</a>
-                        </li>                        
+                        </li>
                     </ul>
-                </div>                
+                </div>
             </div>
 
             <div class="row">

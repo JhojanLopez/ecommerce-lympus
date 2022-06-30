@@ -3,12 +3,9 @@
    if(isset($_SESSION['rol'])){//indicamos que  hay una sesion activa
      $sessionActiva = true;
  
-    include('php/ventas/metodo_pago.php');//obtengo la lista ventas apartir de la clase carrito
+    include('php/ventas/metodo_pago.php');
         
-
  
-   }else{
-    header('location:index.php');
    }
  ?>
 <html lang="es">
@@ -208,10 +205,16 @@
                                 <li>1GB de navegacion</li>
                                 <li>Incluido WhatsApp, Twitter & Facebook</li>
                             </ul>
+                            <?php if(isset($_SESSION['rol'])){ ?>
                             <button type="button" class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#paquete1Prepago">
-                                Compra
+                                Comprar
                             </button>
+                            <?php }else{ ?>
+                            <button type="button" class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#advertencia">
+                            Comprar
+                        </button> <?php }?>
                         </div>
                     </div>
                 </div>
@@ -228,7 +231,16 @@
                                 <li>3GB de navegacion</li>
                                 <li>Incluido WhatsApp, Twitter & Facebook</li>
                             </ul>
-                            <button type="button" class="w-100 btn btn-lg btn-primary">Comprar</button>
+                            <?php if(isset($_SESSION['rol'])){ ?>
+                            <button type="button" class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#paquete1Prepago">
+                                Comprar
+                            </button>
+                            <?php }else{ ?>
+                            <button type="button" class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#advertencia">
+                            Comprar
+                        </button> <?php }?>
                         </div>
                     </div>
                 </div>
@@ -245,7 +257,16 @@
                                 <li>10GB de navegacion</li>
                                 <li>Incluido WhatsApp, Twitter & Facebook</li>
                             </ul>
-                            <button type="button" class="w-100 btn btn-lg btn-primary">Comprar</button>
+                            <?php if(isset($_SESSION['rol'])){ ?>
+                            <button type="button" class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#paquete1Prepago">
+                                Comprar
+                            </button>
+                            <?php }else{ ?>
+                            <button type="button" class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#advertencia">
+                            Comprar
+                        </button> <?php }?>
                         </div>
                     </div>
                 </div>
@@ -262,15 +283,65 @@
                                 <li>30GB de navegacion</li>
                                 <li>Incluido WhatsApp, Twitter & Facebook</li>
                             </ul>
-                            <button type="button" class="w-100 btn btn-lg btn-primary">Comprar</button>
+                            <?php if(isset($_SESSION['rol'])){ ?>
+                            <button type="button" class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#paquete1Prepago">
+                                Comprar
+                            </button>
+                            <?php }else{ ?>
+                            <button type="button" class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#advertencia">
+                            Comprar
+                        </button> <?php }?>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
-        <!-- modales de compra -->
-
+       
+         <!-- modales de compra paquete 1 -->
         <div class="modal fade" id="paquete1Prepago" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="php/servicios/movil.php" method="POST">
+                        <div class="modal-header bg-primary text-white">
+                            <h5 class="modal-title" id="exampleModalLabel">Paquete 7 días</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <input type="hidden" name="paquete" value="1">
+                            <p>Minutos y SMS todo Destino ilimitados
+                                1GB de navegacion
+                                Incluido WhatsApp, Twitter & Facebook.
+                            </p>
+                            <br/>
+                            <p>
+                                Precio: $7000
+                            </p>   
+
+                            <label for="metodo_pago">Escoge tu metodo de pago:</label>
+                            <select id="tipo" name="metodo_pago" class="form-select" required>
+                                <option selected value=""></option>
+                                <option name="metodo_pago" value="1">CONSIGNACION</option>
+                                <?php if(isset($metodoPago)){?>
+                                <option name="metodo_pago" value="<?php echo $metodoPago['codigo']?>">
+                                    <?php echo strtoupper(''.$metodoPago['tipo']).' / '.$metodoPago['nombre_banco']
+                                        ?></option>
+                                <?php }?>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Comprar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+         <!-- modales de compra -->
+         <div class="modal fade" id="paquete2Prepago" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -303,6 +374,24 @@
                 </div>
             </div>
         </div>
+          <!-- modales de advertencia -->
+        <div class="modal fade" id="advertencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Atención</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Inicia sesión para poder adquirir servicios. Si no posees una cuenta puedes
+                    <a class="decoration-none" href="registro.php">registrate.</a>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
     </div>
 
     <!-- footer -->
