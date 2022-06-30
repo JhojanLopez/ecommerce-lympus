@@ -1,0 +1,366 @@
+/* https://codigoconjuan.com/que-es-y-como-funciona-la-especificidad-en-css/ informacion css 
+   https://htmlcolorcodes.com/es/ Obtener códigos de color HTML, códigos de color Hex, RGB 
+   https://fonts.google.com/ obtener distintas fuentes
+   https://responsively.app/  aplicacion para mirear la pagina como se veria en distintos dispositivos
+   https://www.cssmatic.com/box-shadow*/
+
+:root {
+    /* pseudo clase definimos los colores o fuentes */
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #ff0000;
+    --secundario: #cb3234;
+    --gris: #757575;
+    --grisclaro: #dfe9f3;
+    --fuente-principal: 3.8rem;
+    /* 1rem=10px  */
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    scroll-snap-type: x mandatory;
+}
+
+.servicios .navegacion-principal .contacto {
+
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+
+}
+
+/* * (aplica a todos los elementos html ) */
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: linear-gradient(to top, var(--grisclaro) 0%, var(--blanco) 100%);
+    /* degrada (to (top...),color con % ,color con % )*/
+}
+
+.sombra {
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.75);
+    /* pone tres lineas igual para la utilidad dependiendo de cada navegador de internet */
+    -moz-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.75);
+    padding: 2rem;
+    border-radius: 1rem;
+    /* width: auto; */
+}
+
+
+h1 {
+    font-size: 3.8;
+}
+
+h2 {
+    font-size: 2.8;
+}
+
+h3 {
+    font-size: 1.8;
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+}
+
+.titulo span {
+    /* indicamos que la etiqueta que tenga una clase titulo y contenga span se le agrega estos cambios */
+    color: var(--primario);
+    font-size: 3rem;
+}
+
+.contenedor {
+    width: 120rem;
+    /* 1200 px */
+    /*    margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto; */
+
+    margin: 1rem auto;
+    /* simplificamos la expresion de arriba */
+}
+
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+}
+
+.boton:hover {
+    cursor: pointer;
+}
+
+
+
+.servicios {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+.nav-bg {
+
+    background-color: var(--secundario);
+}
+
+.navegacion-principal {
+
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+}
+
+.navegacion-principal a {
+
+    background-color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1rem;
+}
+
+.navegacion-principal a:hover {
+    /* hover cuando este encima el cursor */
+
+    background-color: var(--primario);
+    color: var(--oscuro);
+
+}
+
+
+
+.fondo {
+    background-image: url(../img/uvbuga.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 410px;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.contenido-fondo {
+    position: absolute;
+
+    background-color: rgba(0, 0, 0, 5);
+    background-color: rgba(0 0 0 /50%);
+    /* Dependiendo del navegador funciona con una u otra linea */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenido-fondo h2,
+.contenido-fondo p {
+    color: var(--blanco);
+}
+
+.ubicacion {
+    display: flex;
+    align-items: flex-end;
+}
+
+
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicio p {
+    line-height: 2;
+    /* interlineado */
+}
+
+.servicio h3 {
+    color: var(--secundario);
+    font-weight: normal;
+}
+
+.servicio .iconos {
+
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+
+.formulario {
+    border: none;
+    background-color: var(--gris);
+    width: min(60rem, 100%);
+    margin: 0 auto;
+    border-radius: 1rem;
+}
+
+.formulario fieldset {
+    border: none;
+}
+
+.formulario legend {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+
+.campo {
+
+    margin-bottom: 1rem;
+}
+
+.campo label {
+
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+}
+
+.campo input {
+    background-color: var(--primario);
+}
+
+.footer {
+    text-align: center;
+}
+
+
+
+
+
+.enviar.boton {
+    width: 100%;
+}
+
+.campo textarea {
+    height: 20rem;
+}
+
+
+
+@media (min-width:768px) {
+
+    .navegacion-principal {
+        display: flex;
+        flex-direction: row;
+    }
+
+
+    .servicios {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        /*  grid-template-columns: 1fr 1fr 1fr;/* indicamos cuantas fracciones ocuparan en este caso cada columna */
+        /* grid-template-columns: 33.3% 33.3% 33.3%; indicamos el porcentaje a cada columna que queremos visualizar*/
+        /*  grid-template-rows: 200px 200px; */
+        column-gap: 1rem;
+        /* margen entre columnas  */
+    }
+
+    .boton {
+        width: auto;
+    }
+
+
+    .contenedor-campos {
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto 20rem;
+    }
+
+    .campo:nth-child(3),
+    .campo:nth-child(4) {
+        /* selecciono campos especificos para cambiarlos */
+        grid-column: 1/3;
+    }
+
+}
+
+@media(min-width:480px) {
+    /* mediaquery */
+
+    body {
+        background-color: blue;
+    }
+}
+
+
+
+/* h1{
+
+    color: red;
+    text-align: center;
+    font-size: 2rem;
+} */
+
+/* h2{
+
+    color: brown;
+    text-align: center;
+}
+
+nav :hover{
+     color: red;
+} */
+
+
+
+
+/* p{
+    color: yellowgreen;
+} */
+
+/* span{
+
+    font-size: 2rem;
+    /* no se utiliza pixeles, se utiliza rem ya que con estos se acomodan de mejor manera en paginas responsive
+    
+}
+
+.titulo{/* .nombreclase creamos clase en css 
+    color: var(--primario);/* var(variable defininida) 
+    font-size:var(--fuente-principal);
+    text-align: center;
+   
+   
+}
+
+
+
+
+*/

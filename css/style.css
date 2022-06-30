@@ -1,0 +1,33 @@
+
+
+.btn-editar{
+    background-color: #3377FF;
+    color: white;
+    
+}
+.btn-editar:hover{
+    background-color: #1865FF;
+}
+
+.nav-principal:hover {
+    cursor: pointer;
+    font-size: 1.2rem;
+
+}
+
+.nav-secundario a:hover {
+    cursor: pointer;
+    background-color: #0275d8;
+    transition: background-color .9s;
+    font-size: 1.2rem;
+}
+
+.imagen-tienda{
+    height: auto;
+    width: auto;
+    max-height: 200px;
+    max-width: 200px;
+    
+}
+
+
