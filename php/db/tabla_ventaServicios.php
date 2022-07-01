@@ -1,11 +1,29 @@
 <?php
-    $tabla_usuario="usuario";
-    $query_t_u_findAll="SELECT * FROM $tabla_usuario;";
+    $tabla_venta_servicios="venta_servicios";
+    $query_t_vs_findAll="SELECT * FROM $tabla_venta_servicios;";
   
-    function  query_t_u_findByCorreoContrasena($correo, $password){
-        global $tabla_usuario;
+    //servicio movil
+    function query_t_vs_insertar_m($codigoVenta,$codigoServicio,$numero){
+        global $tabla_venta_producto;
         try{
-            $query = "SELECT * FROM $tabla_usuario where Correo='$correo' and Contrasena='$password';";
+            $query ="INSERT INTO venta_servicios (FK_codigoVenta,FK_codigoServicios,numero) VALUES 
+             ('".$codigoVenta."',
+            '".$codigoServicio."',
+            '".$numero."');";
+            return $query;
+    
+        }catch(mysqli_sql_exception $e){
+            var_dump($e);
+        }
+    }
+
+    function query_t_vs_insertar_h($codigoVenta,$codigoServicio,$direccion){
+        global $tabla_venta_producto;
+        try{
+            $query ="INSERT INTO venta_servicios (FK_codigoVenta,FK_codigoServicios,direccion) VALUES 
+             ('".$codigoVenta."',
+            '".$codigoServicio."',
+            '".$direccion."');";
             return $query;
     
         }catch(mysqli_sql_exception $e){

@@ -68,23 +68,7 @@
         }
     }
 
-    function query_t_u_actualizar($codigo,$nombre,$marca,$tipo,$existencia,$precio,$costo,$descripcion){
-        global $tabla_servicios;
-        try{
-            $query ="UPDATE $tabla_servicios set 
-            nombre = '$nombre', 
-            marca='$marca', 
-            existencia='$existencia',
-            precio='$precio',
-            costo='$costo',
-            descripcion='$descripcion' 
-            where codigo= $codigo";
-            return $query;
-    
-        }catch(mysqli_sql_exception $e){
-            var_dump($e);
-        }
-    }
+
 
 
 

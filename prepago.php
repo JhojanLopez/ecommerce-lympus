@@ -22,10 +22,10 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
 
     <script src="https://kit.fontawesome.com/53305f8af1.js" crossorigin="anonymous"></script>
-    <title>Lympus | Tienda virtual, servicios moviles y más</title>
 
 </head>
-
+<body style="position: initial; overflow: initial;">
+   
 <header class="p-3 mb-3 border-bottom bg-dark">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -172,11 +172,14 @@
         </div>
     </div>
 </header>
-
-
-<body style="position: initial; overflow: initial;">
-
-
+     <?php
+     if(isset($_GET['compra'])){
+     ?>
+    <div id="compra" class="d-none"></div>
+      <?php   
+     } 
+     ?>
+    <!-- cartas   -->    
     <div class="container py-3">
 
 
@@ -190,7 +193,6 @@
 
 
         <main>
-
             <div class="row row-cols-1 row-cols-md-4 mb-4 text-center">
                 <div class="col">
                     <div class="card mb-4 rounded-3 shadow-sm border-primary">
@@ -212,9 +214,9 @@
                             </button>
                             <?php }else{ ?>
                             <button type="button" class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#advertencia">
-                            Comprar
-                        </button> <?php }?>
+                                data-bs-target="#advertencia">
+                                Comprar
+                            </button> <?php }?>
                         </div>
                     </div>
                 </div>
@@ -233,14 +235,14 @@
                             </ul>
                             <?php if(isset($_SESSION['rol'])){ ?>
                             <button type="button" class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#paquete1Prepago">
+                                data-bs-target="#paquete2Prepago">
                                 Comprar
                             </button>
                             <?php }else{ ?>
                             <button type="button" class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#advertencia">
-                            Comprar
-                        </button> <?php }?>
+                                data-bs-target="#advertencia">
+                                Comprar
+                            </button> <?php }?>
                         </div>
                     </div>
                 </div>
@@ -259,14 +261,14 @@
                             </ul>
                             <?php if(isset($_SESSION['rol'])){ ?>
                             <button type="button" class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#paquete1Prepago">
+                                data-bs-target="#paquete3Prepago">
                                 Comprar
                             </button>
                             <?php }else{ ?>
                             <button type="button" class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#advertencia">
-                            Comprar
-                        </button> <?php }?>
+                                data-bs-target="#advertencia">
+                                Comprar
+                            </button> <?php }?>
                         </div>
                     </div>
                 </div>
@@ -285,21 +287,21 @@
                             </ul>
                             <?php if(isset($_SESSION['rol'])){ ?>
                             <button type="button" class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#paquete1Prepago">
+                                data-bs-target="#paquete4Prepago">
                                 Comprar
                             </button>
                             <?php }else{ ?>
                             <button type="button" class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#advertencia">
-                            Comprar
-                        </button> <?php }?>
+                                data-bs-target="#advertencia">
+                                Comprar
+                            </button> <?php }?>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
-       
-         <!-- modales de compra paquete 1 -->
+
+        <!-- modales de compra paquete 1 -->
         <div class="modal fade" id="paquete1Prepago" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -310,17 +312,17 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-
-                            <input type="hidden" name="paquete" value="1">
                             <p>Minutos y SMS todo Destino ilimitados
                                 1GB de navegacion
                                 Incluido WhatsApp, Twitter & Facebook.
                             </p>
-                            <br/>
+                            <br />
                             <p>
                                 Precio: $7000
-                            </p>   
-
+                            </p>
+                            <input type="hidden" name="paquete" value="1">
+                            <label for="numero">Numero de celular:</label>
+                            <input type="tel" class="form-control" name="numero" required>
                             <label for="metodo_pago">Escoge tu metodo de pago:</label>
                             <select id="tipo" name="metodo_pago" class="form-select" required>
                                 <option selected value=""></option>
@@ -339,23 +341,28 @@
                 </div>
             </div>
         </div>
-
-         <!-- modales de compra -->
-         <div class="modal fade" id="paquete2Prepago" tabindex="-1" aria-labelledby="exampleModalLabel"
+        <!-- modales de compra paquete 2 -->
+        <div class="modal fade" id="paquete2Prepago" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form action="php/servicios/movil.php" method="POST">
                         <div class="modal-header bg-primary text-white">
-                            <h5 class="modal-title" id="exampleModalLabel">Paquete 7 días</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Paquete 10 días</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-
-                            <input type="hidden" name="paquete" value="1">
                             <p>Minutos y SMS todo Destino ilimitados
-                                1GB de navegacion
-                                Incluido WhatsApp, Twitter & Facebook</p>
+                                3GB de navegacion
+                                Incluido WhatsApp, Twitter & Facebook
+                            </p>
+                            <br />
+                            <p>
+                                Precio: $10000
+                            </p>
+                            <input type="hidden" name="paquete" value="2">
+                            <label for="numero">Numero de celular:</label>
+                            <input type="tel" class="form-control" name="numero" required>
                             <label for="metodo_pago">Escoge tu metodo de pago:</label>
                             <select id="tipo" name="metodo_pago" class="form-select" required>
                                 <option selected value=""></option>
@@ -374,23 +381,123 @@
                 </div>
             </div>
         </div>
-          <!-- modales de advertencia -->
-        <div class="modal fade" id="advertencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Atención</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Inicia sesión para poder adquirir servicios. Si no posees una cuenta puedes
-                    <a class="decoration-none" href="registro.php">registrate.</a>
-                </div>
-                <div class="modal-footer">
+        <!-- modales de compra paquete 3 -->
+        <div class="modal fade" id="paquete3Prepago" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="php/servicios/movil.php" method="POST">
+                        <div class="modal-header bg-primary text-white">
+                            <h5 class="modal-title" id="exampleModalLabel">Paquete 30 días</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <p>Minutos y SMS todo Destino ilimitados
+                                10GB de navegacion
+                                Incluido WhatsApp, Twitter & Facebook
+                            </p>
+                            <br />
+                            <p>
+                                Precio: $30000
+                            </p>
+                            <input type="hidden" name="paquete" value="3">
+                            <label for="numero">Numero de celular:</label>
+                            <input type="tel" class="form-control" name="numero" required>
+                            <label for="metodo_pago">Escoge tu metodo de pago:</label>
+                            <select id="tipo" name="metodo_pago" class="form-select" required>
+                                <option selected value=""></option>
+                                <option name="metodo_pago" value="1">CONSIGNACION</option>
+                                <?php if(isset($metodoPago)){?>
+                                <option name="metodo_pago" value="<?php echo $metodoPago['codigo']?>">
+                                    <?php echo strtoupper(''.$metodoPago['tipo']).' / '.$metodoPago['nombre_banco']
+                                        ?></option>
+                                <?php }?>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Comprar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
+        <!-- modales de compra paquete 4 -->
+        <div class="modal fade" id="paquete4Prepago" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="php/servicios/movil.php" method="POST">
+                        <div class="modal-header bg-primary text-white">
+                            <h5 class="modal-title" id="exampleModalLabel">Paquete 30 días plus</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <p>Minutos y SMS todo Destino ilimitados
+                                30GB de navegacion
+                                Incluido WhatsApp, Twitter & Facebook
+                            </p>
+                            <br />
+                            <p>
+                                Precio: $40000
+                            </p>
+                            <input type="hidden" name="paquete" value="4">
+                            <label for="numero">Numero de celular:</label>
+                            <input type="tel" class="form-control" name="numero" required>
+                            <label for="metodo_pago">Escoge tu metodo de pago:</label>
+                            <select id="tipo" name="metodo_pago" class="form-select" required>
+                                <option selected value=""></option>
+                                <option name="metodo_pago" value="1">CONSIGNACION</option>
+                                <?php if(isset($metodoPago)){?>
+                                <option name="metodo_pago" value="<?php echo $metodoPago['codigo']?>">
+                                    <?php echo strtoupper(''.$metodoPago['tipo']).' / '.$metodoPago['nombre_banco']
+                                        ?></option>
+                                <?php }?>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Comprar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- modales de advertencia -->
+        <div class="modal fade" id="advertencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Atención</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Inicia sesión para poder adquirir servicios. Si no posees una cuenta puedes
+                        <a class="decoration-none" href="registro.php">registrate.</a>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- modal de compra -->
+         <div class="modal fade" id="modalCompra" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Compra</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                       Tu compra ha sido realizada con exito.
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 
@@ -447,15 +554,14 @@
         </div>
     </footer>
     <!-- fin del footer -->
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <!-- js de jquery -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <!--  js personalizado  -->
-    <script src="js/index.js"></script>
-
+    <script src="js/servicios.js"></script>
+    <!--  js personalizado  -->
     <script src="js/menu_cuenta.js"></script>
 
 

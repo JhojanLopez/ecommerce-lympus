@@ -1,7 +1,7 @@
 $('document').ready(function (){
 
   if($('#compra').hasClass('d-none')){
-    $('#modalCompra').modal("show")
+    $('#modalCompra').modal("show");
   }
 
   

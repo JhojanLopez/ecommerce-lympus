@@ -11,7 +11,7 @@
         $codigo_metodo_pago = $_POST['metodo_pago'];
         $totalVenta= $_POST['totalVenta'];
         $ganancia = gananciaVenta();//ganancia total
-        $fecha= date('d-m-y');
+        $fecha= date('y-m-d');
         $codigo_usuario=$_SESSION['codigo'];
         echo  'cod pago: '.$codigo_metodo_pago.'total venta='.$totalVenta.'Ganancia venta='.$ganancia
         .'fecha:' .$fecha.' codigo usuario:'.$codigo_usuario;
