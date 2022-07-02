@@ -16,14 +16,15 @@ include('../db/tabla_producto.php');
   $costo=$_POST['costo'];
   $descripcion=$_POST['descripcion'];
   
-  echo'codigo= '.$codigo.' nombre= '.$nombre.' marca= '.$marca.' tipo= '.$tipo.' existencia= '.$existencia.
+  echo'nombre= '.$nombre.' marca= '.$marca.' tipo= '.$tipo.' existencia= '.$existencia.
   ' precio= '.$precio.' costo= '.$costo.' descripcion= '.$descripcion;
 
 
 if($precio>$costo){
     /* actualizarProducto(); */
+    $imagen = establecerImagen($tipo);
     $query = query_t_p_insertar($nombre, $marca, $tipo,
-        $existencia, $precio, $costo, $descripcion);
+        $existencia, $precio, $costo, $descripcion,$imagen);
 
         $result = mysqli_query($link, $query);
 
@@ -35,9 +36,22 @@ if($precio>$costo){
     header('location:../../gestionarProductos.php?error1=true');
        
 }
-
-
     
+}
+
+function establecerImagen($tipo){
+    if($tipo=='Celular'){
+        return 'img/imgGrandes/Celulares/predeterminadocel.png';
+    }else if($tipo=='Computador'){
+        return 'img/imgGrandes/Computadores/predeterminadopc.png';
+        
+    }else{
+        return 'img/imgGrandes/Televisores/predeterminadotv.png';
+   
+    }
+
+
+
 }
 
 ?>

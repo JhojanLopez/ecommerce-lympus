@@ -123,17 +123,18 @@
     }
     
     function query_t_p_insertar($nombre, $marca, $tipo,
-                                $existencia, $precio, $costo, $descripcion){
+                                $existencia, $precio, $costo, $descripcion,$imagen){
         global $tabla_productos;
         try{
-            $query ="INSERT INTO $tabla_productos (nombre, marca, tipo, existencia, precio, costo, descripcion) VALUES 
+            $query ="INSERT INTO $tabla_productos (nombre, marca, tipo, existencia, precio, costo, descripcion, imagen) VALUES 
              ('".$nombre."',
             '".$marca."',
             '".$tipo."',
             '".$existencia."',
             '".$precio."',
             '".$costo."',
-            '".$descripcion."');";
+            '".$descripcion."',
+            '".$imagen."');";
             return $query;
     
         }catch(mysqli_sql_exception $e){

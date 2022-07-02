@@ -46,22 +46,75 @@ include('php/db/conectar.php'); */
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 px-2 justify-content-center mb-md-0">
                     <li>
-                        <div class="nav-principal fs-5">
+                        <div class="nav-principal">
                             <a href="index.php" class="nav-link px-2 text-primary text-decoration-none">
                                 Lympus <i class="fa-solid fa-bolt-lightning"></i>
                             </a>
                         </div>
+
+
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <a href="#" class="nav-principal nav-link px-2 d-block dropdown-toggle text-primary"
+                                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                Servicios
+                                <span><i class="fa-solid fa-tv"></i></span>
+                            </a>
+                            <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                                <li><a class="dropdown-item" href="prepago.php">Servicios movil prepago</a></li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li><a class="dropdown-item" href="postpago.php">Servicios movil postpago</a></li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="internetHogar.php">Servicios internet hogar</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="doblePlay.php">Servicios dobleplay hogar</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <a href="#" class="nav-principal nav-link px-2 d-block dropdown-toggle text-primary"
+                                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                Tienda <span><i class="fa-brands fa-shopify"></i></span>
+                            </a>
+                            <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                                <li><a class="dropdown-item" href="celulares.php">Celulares</a></li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="televisores.php">Televisores</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="computadores.php">Computadores</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
                 <?php 
-              if($sessionActiva){   
-            ?>
+            if(isset($sessionActiva)){   
+          ?>
                 <div id="sessionActiva" class="d-none">
                     usado para comprobar si hay una session activa
                 </div>
                 <?php 
-              }
-              ?>
+            }
+            ?>
                 <div id="opcionesNoSesion" class="dropdown text-end">
                     <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle text-primary"
                         id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -69,9 +122,7 @@ include('php/db/conectar.php'); */
                         <i class="fa-solid fa-user"></i>
                     </a>
                     <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                        <li>
-                            <a class="dropdown-item" href="registro.html">Registrarse</a>
-                        </li>
+                        <li><a class="dropdown-item" href="registro.php">Registrarse</a></li>
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
@@ -84,34 +135,39 @@ include('php/db/conectar.php'); */
                     <!-- si no ha iniciado logeado permanecera oculto -->
                     <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle text-primary"
                         id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"><?php 
-                echo $_SESSION['nombre'];
-                ?>
+              echo $_SESSION['nombre'];
+              ?>
                         <i class="fa-solid fa-user"></i>
                     </a>
                     <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="configuracion.php">Configuracion</a></li>
+
+                        <?php
+                if($_SESSION['rol']==1){
+                
+              ?>
                         <li>
-                            <a class="dropdown-item" href="configuracion.php">Configuracion</a>
+                            <a class="dropdown-item" href="administrarUsuarios.php">Administrar usuarios</a>
                         </li>
                         <?php
-                  if($_SESSION['rol']==1 || $_SESSION['rol']==2){
                   
-                ?>
+                }
+              ?>
+
+
+                        <?php
+                if($_SESSION['rol']==1 || $_SESSION['rol']==2){
+                
+              ?>
                         <li>
-                            <a class="dropdown-item" href="#">Administrar productos</a>
+                            <a class="dropdown-item" href="gestionarProductos.php">Gestionar productos</a>
                         </li>
                         <?php
-                    
-                  }
-                ?>
-                        <?php
-                  if($_SESSION['rol']==1 || $_SESSION['rol']==3){
                   
-                ?>
-                        <li><a class="dropdown-item" href="#">Administrar ventas</a></li>
-                        <?php
-                    
-                  }
-                ?>
+                }
+              ?>
+
+
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
@@ -299,7 +355,8 @@ include('php/db/conectar.php'); */
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="php/producto/Agregar_productos.php" method="POST" class="row g-3 was-validated" novalidate>
+                    <form action="php/producto/Agregar_productos.php" method="POST" class="row g-3 was-validated"
+                        novalidate>
                         <div class="col-md-6">
                             <label for="nombre" class="form-label">Nombre:</label>
                             <input type="text" class="form-control" id="nombre" name="nombre" required />
@@ -384,7 +441,7 @@ include('php/db/conectar.php'); */
                         <li class="mb-1">
                             <a class="link-secondary text-decoration-none" href="televisores.php">Televisores</a>
                         </li>
-                        
+
                     </ul>
                 </div>
                 <div class="col-4 col-md">
@@ -395,7 +452,7 @@ include('php/db/conectar.php'); */
                         </li>
                         <li class="mb-1">
                             <a class="link-secondary text-decoration-none" href="postpago.php">postpago</a>
-                        </li>                        
+                        </li>
                     </ul>
                 </div>
                 <div class="col-4 col-md">
@@ -406,9 +463,9 @@ include('php/db/conectar.php'); */
                         </li>
                         <li class="mb-1">
                             <a class="link-secondary text-decoration-none" href="doblePlay.php">Dobleplay hogar</a>
-                        </li>                        
+                        </li>
                     </ul>
-                </div>                
+                </div>
             </div>
 
             <div class="row">
