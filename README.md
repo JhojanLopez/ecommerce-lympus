@@ -1,4 +1,4 @@
-# Lympus
+# ecommerce-lympus
 Aplicacion realizada en php con css, bootstrap, js(jquery) y para la base de datos se utilizo mysql.
 
 Funcionalidades:
